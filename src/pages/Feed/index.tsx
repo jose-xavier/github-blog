@@ -1,3 +1,10 @@
+import { Profile } from './components/Profile'
+import { FeedContainer } from './styles'
+
 export function Feed() {
-  return <h1>feed</h1>
+  return (
+    <FeedContainer>
+      <Profile />
+    </FeedContainer>
+  )
 }

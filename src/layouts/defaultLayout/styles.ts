@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-export const LayoutContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+export const OutletContainer = styled.main`
+  width: 100%;
+  margin: -6rem auto 15rem;
+  max-width: 56rem;
+  padding: 0 1rem;
 `
