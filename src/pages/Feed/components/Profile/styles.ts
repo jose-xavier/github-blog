@@ -9,6 +9,12 @@ export const ProfileContainer = styled.section`
   background: ${(props) => props.theme['base-profile']};
   border-radius: 10px;
   box-shadow: 0px 2px 28px rgba(0, 0, 0, 0.2);
+
+  > img {
+    height: 9.25rem;
+    width: 9.25rem;
+    border-radius: 8px;
+  }
 `
 
 export const ProfileContent = styled.div`
