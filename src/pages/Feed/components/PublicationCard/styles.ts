@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const PublicationCardContainer = styled.div`
+  max-width: 26rem;
   padding: 2rem;
   background: ${(props) => props.theme['base-post']};
   border-radius: 10px;

@@ -19,6 +19,7 @@ export const ProfileContainer = styled.section`
 
 export const ProfileContent = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: 0.75rem;
 
