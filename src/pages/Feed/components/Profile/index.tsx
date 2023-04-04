@@ -4,6 +4,7 @@ import { InfoWithIcon } from '../../../../components/InfoWithIcon'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useTheme } from 'styled-components'
+
 import {
   faUserGroup,
   faBuilding,

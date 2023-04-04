@@ -1,3 +1,10 @@
+import { PostInfo } from './PostInfo'
+import { PostConainer } from './styles'
+
 export function Post() {
-  return <h1>post</h1>
+  return (
+    <PostConainer>
+      <PostInfo />
+    </PostConainer>
+  )
 }
