@@ -8,7 +8,6 @@ interface PostContentProps {
 }
 
 export const PostContent = ({ body }: PostContentProps) => {
-  console.log(body)
   return (
     <ContentContainer>
       <ReactMarkdown

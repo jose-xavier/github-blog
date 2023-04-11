@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useState, useEffect } from 'react'
+import {
+  createContext,
+  ReactNode,
+  useState,
+  useEffect,
+  useCallback,
+} from 'react'
 import { api } from '../lib/axios'
 
 export interface User {
@@ -50,27 +56,30 @@ export function BlogContextProvider({ children }: BlogContextProviderProps) {
   useEffect(() => {
     fetchSearchIssues('')
   }, [])
-  async function fetchUser() {
+
+  const fetchUser = useCallback(async () => {
     const response = await api.get('/users/jose-xavier').then((res) => res.data)
 
     setUser(response)
-  }
+  }, [])
 
-  async function fetchIssues() {
+  const fetchIssues = useCallback(async () => {
     const response = await api
       .get(`/repos/jose-xavier/github-blog/issues`)
       .then((res) => res.data)
 
     setIssues(response)
-  }
+  }, [])
 
-  async function fetchSearchIssues(query: string) {
+  const fetchSearchIssues = useCallback(async (query: string) => {
     const response = await api
-      .get(`/search/issues?q=${query}repo:jose-xavier/github-blog is:issue`)
+      .get(
+        `/search/issues?q=${query}repo:jose-xavier/github-blog  type:issue in:title`,
+      )
       .then((res) => res.data.items)
 
     setIssues(response)
-  }
+  }, [])
 
   const fetchIssueById = async (id: string) => {
     const response = await api

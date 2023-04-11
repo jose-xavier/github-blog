@@ -3,12 +3,11 @@ import { InputInfo, SearchFormContainer } from './styles'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
+import { useBlog } from '../../../../hooks/useBlog'
 
 export function SearchForm() {
   const { issues } = usePost()
-  const { fetchSearchIssues } = usePost()
-
-  console.log(fetchSearchIssues)
+  const { fetchSearchIssues } = useBlog()
 
   const searchFormSchema = z.object({
     query: z.string(),
@@ -20,8 +19,8 @@ export function SearchForm() {
     resolver: zodResolver(searchFormSchema),
   })
 
-  function handleSearchIssues(data: SearchFormInputs) {
-    fetchSearchIssues(data.query)
+  async function handleSearchIssues(data: SearchFormInputs) {
+    await fetchSearchIssues(data.query)
 
     reset()
   }

@@ -6,7 +6,6 @@ import { FeedCardContainer, FeedContainer } from './styles'
 
 export function Feed() {
   const { issues } = usePost()
-  console.log(issues)
 
   return (
     <FeedContainer>

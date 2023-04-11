@@ -14,8 +14,6 @@ export function PublicationCard({ issueProps }: PublicationCardProps) {
 
   const formattedDateToNow = dateDistanceFormatter(created_at)
 
-  console.log(number)
-
   const handleGoToPost = () => navigate(`/post/${number}`)
 
   return (
