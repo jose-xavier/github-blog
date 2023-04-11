@@ -12,18 +12,20 @@ export interface User {
 }
 
 interface Issue {
-  id: number
   title: string
   body: string
-  coments: string
+  comments: string
   html_url: string
+  number: string
   created_at: string
 }
 
 interface BlogContextType {
   user: User
   issues: Issue[]
+  issue: Issue | undefined
   fetchSearchIssues: (query: string) => Promise<void>
+  fetchIssueById: (id: string) => Promise<void>
 }
 
 interface BlogContextProviderProps {
@@ -35,6 +37,7 @@ export const BlogContext = createContext({} as BlogContextType)
 export function BlogContextProvider({ children }: BlogContextProviderProps) {
   const [user, setUser] = useState({} as User)
   const [issues, setIssues] = useState<Issue[]>([])
+  const [issue, setIssue] = useState<Issue | undefined>(undefined)
 
   useEffect(() => {
     fetchUser()
@@ -69,8 +72,24 @@ export function BlogContextProvider({ children }: BlogContextProviderProps) {
     setIssues(response)
   }
 
+  const fetchIssueById = async (id: string) => {
+    const response = await api
+      .get(`repos/jose-xavier/github-blog/issues/${id}`)
+      .then((res) => res.data)
+
+    setIssue(response)
+  }
+
   return (
-    <BlogContext.Provider value={{ user, issues, fetchSearchIssues }}>
+    <BlogContext.Provider
+      value={{
+        user,
+        issues,
+        issue,
+        fetchSearchIssues,
+        fetchIssueById,
+      }}
+    >
       {children}
     </BlogContext.Provider>
   )

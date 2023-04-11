@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 
-export const PublicationCardContainer = styled.div`
+export const PublicationCardContainer = styled.article`
   max-width: 26rem;
   padding: 2rem;
   background: ${(props) => props.theme['base-post']};
   border-radius: 10px;
+  cursor: pointer;
 
   header {
     display: flex;

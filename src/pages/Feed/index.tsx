@@ -6,22 +6,23 @@ import { FeedCardContainer, FeedContainer } from './styles'
 
 export function Feed() {
   const { issues } = usePost()
+  console.log(issues)
 
   return (
     <FeedContainer>
       <Profile />
       <SearchForm />
       <FeedCardContainer>
-        {issues.map((issue) => {
+        {issues.map((issue: any) => {
           return (
             <PublicationCard
+              key={issue.id}
               issueProps={[
                 issue.title,
                 issue.body,
                 issue.created_at,
-                issue.html_url,
+                issue.number,
               ]}
-              key={issue.id}
             />
           )
         })}

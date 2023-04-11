@@ -12,35 +12,41 @@ import {
 } from './styles'
 import { InfoWithIcon } from '../../../components/InfoWithIcon'
 
-export function PostInfo() {
+interface PostInfoProps {
+  issueInfo: string[]
+}
+
+export function PostInfo({ issueInfo }: PostInfoProps) {
+  const [login, title, html_url, date, comments] = issueInfo
+
   const colors = useTheme()
   return (
     <PostInfoContainer>
       <LinksContainer>
-        <a href="">
+        <a href="/">
           <IoIosArrowBack size={16} />
           VOLTAR
         </a>
-        <a href="">
+        <a href={html_url}>
           VER NO GITHUB
           <BiLinkExternal size={16} />
         </a>
       </LinksContainer>
-      <PostTitle>JavaScript data types and data structures</PostTitle>
+      <PostTitle>{title}</PostTitle>
       <IconsContainer>
         <InfoWithIcon
           icon={<FaGithub />}
-          text="jose-xavier"
+          text={login}
           iconColor={colors['base-label']}
         />
         <InfoWithIcon
           icon={<BsCalendarEventFill />}
-          text="Há um dia"
+          text={date}
           iconColor={colors['base-label']}
         />
         <InfoWithIcon
           icon={<FaComment />}
-          text="5 Comentários"
+          text={`${comments} Comentários`}
           iconColor={colors['base-label']}
         />
       </IconsContainer>

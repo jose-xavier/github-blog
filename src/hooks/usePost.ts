@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { BlogContext } from '../contexts/BlogContext'
 
 export const usePost = () => {
-  const { issues, fetchSearchIssues } = useContext(BlogContext)
+  const { issues, issue } = useContext(BlogContext)
 
-  return { issues, fetchSearchIssues }
+  return { issues, issue }
 }
